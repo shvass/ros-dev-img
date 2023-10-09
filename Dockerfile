@@ -2,7 +2,7 @@ FROM osrf/ros:humble-desktop-full
 
 
 # set arguments
-ARG USRNAME=aksh
+ARG USRNAME=rosdev
 ARG UID=1000
 ARG GID=${UID}
 
@@ -13,12 +13,13 @@ RUN groupadd --gid ${GID} ${USRNAME} \
 
 
 #  enable sudo permissions
-RUN echo "aksh ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+RUN echo "rosdev ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 
-COPY ./rootDir/ /
 COPY ./home/ /home/${USRNAME}/
 
 
-ENTRYPOINT [ "/bin/bash", "/entrypoint.sh" ]
+RUN curl -sSL http://get.gazebosim.org | sh
+
+ENTRYPOINT [ "/bin/bash", "/ros_entrypoint.sh" ]
 CMD [ "/bin/bash" ]

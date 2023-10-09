@@ -1,8 +1,7 @@
 #!/bin/bash
 
-docker run -it --rm \
+docker run -itd --name ros-env \
     --user 1000 \
-    -v ./common/:/common \
     --network host \
     --ipc host \
     -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
