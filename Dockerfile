@@ -15,11 +15,15 @@ RUN groupadd --gid ${GID} ${USRNAME} \
 #  enable sudo permissions
 RUN echo "rosdev ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
-
+# make copy of home dir
 COPY ./home/ /home/${USRNAME}/
 
 
+# install gazebo
 RUN curl -sSL http://get.gazebosim.org | sh
+
+# install additional packages
+RUN apt-get install ros-humble-gazebo-ros-pkgs ros-humble-joint-state-publisher
 
 ENTRYPOINT [ "/bin/bash", "/ros_entrypoint.sh" ]
 CMD [ "/bin/bash" ]
