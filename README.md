@@ -21,6 +21,10 @@ Three scripts are provided
 - `./run.sh`      (run a temporary instance of the image)
 - `./rund.sh  container-name  extra-params`   (run a detached instance for long term dev env)
 
+
 ```
 ./build.sh
+```
+```
+./run.sh /bin/bash
 ```
