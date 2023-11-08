@@ -13,7 +13,7 @@ This image is only tested on linux (x11) hosts.
 
 clone the repo
 ```
-git clone https://github.com/shvass/ros-env-img.git  &&  cd ros-env-img
+git clone https://github.com/shvass/ros-dev-img.git  &&  cd ros-dev-img
 ```
 
 Three scripts are provided
