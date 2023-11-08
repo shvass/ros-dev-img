@@ -1,6 +1,21 @@
 #!/bin/bash
 
-docker run -itd --name ros-env \
+conName="ros-env"
+
+# check for arguments
+if [ $# -eq 0 ]
+then
+    echo "No container supplied. Defaulting to ros-env"
+
+else
+    conName=$1
+    echo "creating container ${conName}" 
+fi
+
+
+
+
+docker run -itd --name ${conName} \
     --user 1000 \
     --network host \
     --ipc host \
@@ -8,4 +23,4 @@ docker run -itd --name ros-env \
     --env=DISPLAY \
     --device=/dev/dri:/dev/dri \
     \
-    ros-env-img:latest  $@ \
+    ros-env-img:latest  ${@:2} \
